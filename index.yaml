@@ -3,6 +3,20 @@ entries:
   aliyun-opentelemetry-collector:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-09-21T08:15:09.687959913Z"
+    description: A Helm chart for Kubernetes
+    digest: d35edee6336d538e55ecb547284a252222edfad9272e9901aa3d5fba89ea970d
+    maintainers:
+    - email: jimmy.w@aliyun.com
+      name: Jimmy Wang
+      url: https://nnsay.cn
+    name: aliyun-opentelemetry-collector
+    type: application
+    urls:
+    - https://github.com/nnsay/helm-charts/releases/download/aliyun-opentelemetry-collector-0.1.1/aliyun-opentelemetry-collector-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-09-21T06:53:44.578722408Z"
     description: A Helm chart for Kubernetes
     digest: 97e22afb8538ba4db0b2b365b4c3c5023c5396da553b873c5d0d1d54af2c83b6
@@ -15,4 +29,4 @@ entries:
     urls:
     - https://github.com/nnsay/helm-charts/releases/download/aliyun-opentelemetry-collector-0.1.0/aliyun-opentelemetry-collector-0.1.0.tgz
     version: 0.1.0
-generated: "2022-09-21T06:53:44.579087712Z"
+generated: "2022-09-21T08:15:09.687969713Z"
