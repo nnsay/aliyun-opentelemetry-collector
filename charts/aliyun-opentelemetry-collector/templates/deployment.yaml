@@ -42,4 +42,4 @@ spec:
                   fieldPath: metadata.name
           volumeMounts:
             - name: otc-internal
-              modeuntPath: /conf
+              mountPath: /conf
