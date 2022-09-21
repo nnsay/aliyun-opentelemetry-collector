@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: otel-collector
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: otel-collector
+  template:
+    metadata:
+      labels:
+        app: otel-collector
+      annotations:
+        k8s.aliyun.com/eci-ram-role-name: pnt-CodeRole
+        k8s.aliyun.com/eci-image-cache: "true"
+    spec:
+      volumes:
+        - name: otc-internal
+          configMap:
+            name: otel-collector
+            items:
+              - key: collector.yaml
+                path: collector.yaml
+            defaultMode: 420
+      containers:
+        - name: otel-collector
+          image: {{ .Values.collectorPod.image -}} : {{- .Values.collectorPod.tag }}
+          args:
+            - '--config=/conf/collector.yaml'
+          resources:
+            limits:
+              cpu: {{ .Values.collectorPod.resource.cpu }}
+              memory: {{ .Values.collectorPod.resource.memory }}
+            requests:
+              cpu: {{ .Values.collectorPod.resource.cpu }}
+              memory: {{ .Values.collectorPod.resource.memory }}
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          volumeMounts:
+            - name: otc-internal
+              modeuntPath: /conf

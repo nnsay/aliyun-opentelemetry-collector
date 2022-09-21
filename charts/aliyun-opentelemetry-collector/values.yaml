@@ -1,0 +1,27 @@
+# Default values for aliyun-opentelemetry-collector.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+collectorReceiver:
+  endpoint: "0.0.0.0:9411"
+
+collectorExporter:
+  endpoint: "cn-hangzhou-intranet.log.aliyuncs.com"
+  project: "ngiq-cn-pnt-log"
+  logstore: "ngiq-cn-pnt-trace-traces"
+  ecs_ram_role: "pnt-CodeRole"
+
+collectorPod:
+  image: "ngiq-registry.cn-hangzhou.cr.aliyuncs.com/ngiq-cr/opentelemetry-collector-contrib"
+  tag: "latest"
+  resource:
+    cpu: "1"
+    memory: "1Gi"
+
+collectorService:
+  port: 9411
+
+collectorHpa:
+  max: 3
+  min: 1
+  memoryUtilization: 70
